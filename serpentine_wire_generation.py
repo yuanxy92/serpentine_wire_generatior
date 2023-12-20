@@ -71,7 +71,7 @@ def draw_arc(ax, start_point, direction_angle, arc_angle, radius, line_width):
 # Start point
 start_point = [0, 0]
 # arc angle in degrees
-arc_angle = 180
+arc_angle = 160
 direction_angle0 = arc_angle / 2
 line_width = 2
 line_length = 4
@@ -112,8 +112,8 @@ for scale in scale_factor:
 
 ax.set_aspect('equal')
 # Set the x and y ranges
-plt.xlim(-1, 60)  # Set the x range from 1 to 5
-plt.ylim(-10, 10)  # Set the y range from 0 to 12
+plt.xlim(-1, 50)  # Set the x range from 1 to 5
+plt.ylim(-5, 7.5)  # Set the y range from 0 to 12
 plt.show()
 
 a=1
