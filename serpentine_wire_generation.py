@@ -30,7 +30,7 @@ def draw_line(ax, start_point, direction_angle, line_length, line_width):
     direction_angle_arc = direction_angle / 180 * math.pi
     dx = line_length * math.cos(direction_angle_arc)
     dy = line_length * math.sin(direction_angle_arc)
-    ax.plot([current_x, current_x + dx], [current_y, current_y + dy], linewidth=line_width, color='black')
+    ax.plot([current_x, current_x + dx], [current_y, current_y + dy], linewidth=line_width, color='#FFD700')
     return [current_x + dx, current_y + dy, direction_angle]
 
 def draw_arc(ax, start_point, direction_angle, arc_angle, radius, line_width):
@@ -54,7 +54,7 @@ def draw_arc(ax, start_point, direction_angle, arc_angle, radius, line_width):
     else:
         theta2 = -(180 - arc_angle) / 2
         theta1 = theta2 - arc_angle
-    arc = Arc((center_x, center_y), 2 * radius, 2 * radius, angle=theta1, theta1=0, theta2=arc_angle, linewidth=line_width)
+    arc = Arc((center_x, center_y), 2 * radius, 2 * radius, angle=theta1, theta1=0, theta2=arc_angle, linewidth=line_width, color='#FFD700')
     ax.add_patch(arc)
     # calculate end point
     if direction_angle > 0:
@@ -71,9 +71,9 @@ def draw_arc(ax, start_point, direction_angle, arc_angle, radius, line_width):
 # Start point
 start_point = [0, 0]
 # arc angle in degrees
-arc_angle = 160
+arc_angle = 180
 direction_angle0 = arc_angle / 2
-line_width = 2
+line_width = 3
 line_length = 4
 radius = 2
 gap = 0.4
@@ -87,6 +87,7 @@ fig, ax = plt.subplots()
 #     print([current_x, current_y, direction_angle])
 
 scale_factor = [0, 1, -1]
+scale_factor = [0]
 for scale in scale_factor:
     current_x = start_point[0]
     current_y = start_point[1]
@@ -98,7 +99,7 @@ for scale in scale_factor:
     current_x = current_x + dx
     current_y = current_y + dy
 
-    for i in range(6):
+    for i in range(12):
         # 1
         [current_x, current_y, direction_angle] = draw_line(ax, [current_x, current_y], direction_angle, line_length, line_width)
         print([current_x, current_y, direction_angle])
@@ -112,7 +113,7 @@ for scale in scale_factor:
 
 ax.set_aspect('equal')
 # Set the x and y ranges
-plt.xlim(-1, 50)  # Set the x range from 1 to 5
+plt.xlim(-1, 100)  # Set the x range from 1 to 5
 plt.ylim(-5, 7.5)  # Set the y range from 0 to 12
 plt.show()
 
