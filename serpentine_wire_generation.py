@@ -73,21 +73,15 @@ start_point = [0, 0]
 # arc angle in degrees
 arc_angle = 180
 direction_angle0 = arc_angle / 2
-line_width = 3
+line_width = 1
 line_length = 4
 radius = 2
-gap = 0.4
+gap = 1
+y_shift = 1
 
 fig, ax = plt.subplots()
 
-# for i in range(4):
-#     [current_x, current_y, direction_angle] = draw_line(ax, [current_x, current_y], direction_angle, line_length, line_width)
-#     print([current_x, current_y, direction_angle])
-#     [current_x, current_y, direction_angle] = draw_arc(ax, [current_x, current_y], direction_angle, arc_angle, radius, line_width)
-#     print([current_x, current_y, direction_angle])
-
 scale_factor = [0, 1, -1]
-scale_factor = [0]
 for scale in scale_factor:
     current_x = start_point[0]
     current_y = start_point[1]
@@ -98,6 +92,7 @@ for scale in scale_factor:
     dy = scale * gap * math.sin(direction_angle_arc_shift)
     current_x = current_x + dx
     current_y = current_y + dy
+    current_y = current_y - y_shift * scale
 
     for i in range(12):
         # 1
@@ -114,7 +109,7 @@ for scale in scale_factor:
 ax.set_aspect('equal')
 # Set the x and y ranges
 plt.xlim(-1, 100)  # Set the x range from 1 to 5
-plt.ylim(-5, 7.5)  # Set the y range from 0 to 12
+plt.ylim(-10, 10)  # Set the y range from 0 to 12
 plt.show()
 
 a=1
